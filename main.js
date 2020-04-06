@@ -13,7 +13,7 @@ function setQuery(evt) {
 }
 
 function getResults(query) {
-  fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
+  fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}&lang=pl`)
     .then(weather => {
       return weather.json();
     })
@@ -32,7 +32,7 @@ function displayResults(weather) {
   temp.innerText = `${Math.round(weather.main.temp)}°C`;
 
   let weather_el = document.querySelector('.current .weather');
-  weather_el.innerText = weather.weather[0].main;
+  weather_el.innerText = weather.weather[0].description;
 
   let hilow = document.querySelector('.current .hi-low');
   hilow.innerText = `${Math.round(weather.main.temp_min)}°C / ${Math.round(
@@ -42,27 +42,27 @@ function displayResults(weather) {
 
 function dateBuilder(d) {
   let months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
+    'Styczeń',
+    'Luty',
+    'Marzec',
+    'Kwiecień',
+    'Maj',
+    'Czerwiec',
+    'Lipiec',
+    'Sierpień',
+    'Wrzesień',
+    'Październik',
+    'Listopad',
+    'Grudzień'
   ];
   let days = [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday'
+    'Niedziela',
+    'Poniedziałek',
+    'Wtorek',
+    'Sroda',
+    'Czwartek',
+    'Piątek',
+    'Sobota'
   ];
 
   let day = days[d.getDay()];
